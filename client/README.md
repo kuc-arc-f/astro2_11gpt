@@ -11,19 +11,19 @@
 ***
 ### Summary
 
-Astro 2 + tRPC sample, client
+Astro 2 + API sample, client
 
 ***
 ### setup
  
-* PUBLIC_TRPC_URL: tPRC server
+* PUBLIC_API_URL:
 * auth info: PUBLIC_BASIC_AUTH_USER, PUBLIC_BASIC_AUTH_PASSWORD
 
 ```
 PUBLIC_BASIC_AUTH_USER = "hoge"
 PUBLIC_BASIC_AUTH_PASSWORD = "1111"
 
-PUBLIC_TRPC_URL=http://localhost:4000/trpc
+PUBLIC_API_URL=http://localhost:4000
 ```
 
 ***
