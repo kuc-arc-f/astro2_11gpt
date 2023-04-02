@@ -1,5 +1,6 @@
 import LibCrud from '../../lib/LibCrud';
-
+import Crud from './Crud';
+//
 const CrudEdit = {
   /**
    *
@@ -14,15 +15,11 @@ const CrudEdit = {
       const url = import.meta.env.PUBLIC_API_URL;
       console.log("url=", url); 
       const elm: any = document.querySelector('#item_id');
-      const id = elm?.value;      
-      const title = document.querySelector<HTMLInputElement>('#title');
-      const item = {
-        id: Number(id),
-        title: title?.value,
-        content : '',
-      }
-console.log(item);
-      const body = JSON.stringify(item);		
+      const id = elm?.value;  
+      let values = Crud.getInputValues();  
+      values.id = Number(id);
+      console.log(values);
+      const body = JSON.stringify(values);		
       const res = await fetch(url + '/tasks/update', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},      
@@ -56,6 +53,14 @@ console.log(item);
       if(valid === false) {
 //        alert("NG, valid Login");
       }
+      //
+      const hid_completed: any = document.querySelector('#item_completed');
+      const hid_completed_value = hid_completed?.value;      
+      const completed = (<HTMLInputElement>document.querySelector("#completed"));
+      if(Number(hid_completed_value) === 1) {
+        completed.checked = true;
+      }
+
       //btn
       const button: any = document.querySelector('#btn_save');
       button.addEventListener('click', async() => {
