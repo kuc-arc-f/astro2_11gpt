@@ -31,5 +31,7 @@ yarn build
 ***
 ### blog
 
+https://zenn.dev/knaka0209/articles/f68866b4b946d9
+
 ***
 
