@@ -79,9 +79,13 @@ const  LibTask = {
           created_at,
           updated_at
         )
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11,
+          current_timestamp, 
+          current_timestamp, current_timestamp
+        )
         RETURNING *
       `;
+      //, $12, $13, $14
       const values = [
         task.user_id,
         task.title,
@@ -94,9 +98,9 @@ const  LibTask = {
         task.tag_3,
         task.tag_4,
         task.tag_5,
-        task.complete_date,
-        task.created_at,
-        task.updated_at,
+//        task.complete_date,
+//        task.created_at,
+//        task.updated_at,
       ];
 //console.log(text);
       const res = await client.query(queryText, values);
@@ -127,7 +131,10 @@ console.log("id=", id);
       await client.query('BEGIN');
       // update task
       const result = await client.query(
-        'UPDATE tasks SET user_id = $1, title = $2, content = $3, priority = $4, category_id = $5, completed = $6, tag_1 = $7, tag_2 = $8, tag_3 = $9, tag_4 = $10, tag_5 = $11, complete_date = $12, updated_at = $13 WHERE id = $14 RETURNING *',
+        `UPDATE tasks SET user_id = $1, title = $2, content = $3, priority = $4, category_id = $5,
+         completed = $6, 
+         tag_1 = $7, tag_2 = $8, tag_3 = $9, tag_4 = $10, tag_5 = $11,
+         complete_date = $12, updated_at = current_timestamp WHERE id = $13 RETURNING *`,
         [
           task.user_id,
           task.title,
@@ -141,7 +148,7 @@ console.log("id=", id);
           task.tag_4,
           task.tag_5,
           task.complete_date,
-          task.updated_at,
+//          task.updated_at,
           id,
         ],
       );
