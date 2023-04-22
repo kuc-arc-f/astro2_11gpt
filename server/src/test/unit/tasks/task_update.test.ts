@@ -59,6 +59,7 @@ console.log("id=", response.body.data.id);
       .post('/tasks/update')
       .send(newTask);
 
-    expect(response.status).toBe(200);    
+    expect(response.status).toBe(200);
+    expect(response.body.ret).toBe("OK");    
   });  
 });

@@ -17,7 +17,7 @@ Astro 2 + API sample, server
 * .env, postgres set
 
 ```
-POSTGRES_DATABASE="er_chart"
+POSTGRES_DATABASE="gpt1"
 POSTGRES_USER="postgres"
 POSTGRES_PASSWORD=""
 POSTGRES_HOST=""

@@ -24,8 +24,9 @@ describe('POST /tasks/create', () => {
     const response = await request(app)
       .post('/tasks/create')
       .send(newTask);
-
+//console.log(response.body);
     expect(response.status).toBe(200);
+    expect(response.body.ret).toBe("OK");
 //    expect(response.body).toHaveProperty('id');
   });
 });
